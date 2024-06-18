@@ -1,4 +1,3 @@
-laporan.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,12 +143,12 @@ if ($result_total_barang->num_rows > 0) {
                 <td><?php echo number_format($pemesanan['total'], 0, ",", "."); ?></td>
                 <td><?php echo $pemesanan['waktu']; ?></td>
                 <td>
-                    <form method="POST">
+                    <form method="POST" class="d-inline">
                         <input type="hidden" name="order_id" value="<?php echo $pemesanan['order_id']; ?>">
-                        <select name="status" class="form-select" onchange="this.form.submit()">
-                            <option value="pending" <?php echo $pemesanan['status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
-                            <option value="terverifikasi" <?php echo $pemesanan['status'] == 'terverifikasi' ? 'selected' : ''; ?>>Terverifikasi</option>
-                        </select>
+                        <input type="hidden" name="status" value="<?php echo $pemesanan['status'] == 'pending' ? 'terverifikasi' : 'pending'; ?>">
+                        <button type="submit" class="btn btn-<?php echo $pemesanan['status'] == 'pending' ? 'warning' : 'success'; ?>">
+                            <?php echo ucfirst($pemesanan['status']); ?>
+                        </button>
                     </form>
                 </td>
                 <td>
