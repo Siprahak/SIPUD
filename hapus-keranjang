@@ -1,0 +1,19 @@
+<?php
+session_start();
+if(!isset($_GET['nama']) || empty($_GET['nama'])){
+    header("Location: keranjang.php");
+    exit;
+}
+
+if (!isset($_SESSION['keranjang'])) {
+    header("Location: keranjang.php");
+    exit;
+}
+
+if(!isset($_SESSION['keranjang'][$_GET['nama']])){
+    unset($_SESSION['keranjang'][$_GET['nama']]);
+}
+
+header("Location: keranjang.php");
+    exit;
+?>
